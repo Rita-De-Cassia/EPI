@@ -73,6 +73,7 @@ const specificStyle = StyleSheet.create({
   specificContainer: {
     flex: 1,
     backgroundColor: 'rgba(77, 148, 255, 0.54)',
+    backgroundImage: '../imagens/fundo',
     alignItems: 'center',
     justifyContent: 'center',
   },

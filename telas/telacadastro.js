@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, Input, Text} from 'react-native-elements';
+import { Button, CheckBox, Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../style/main';
 
@@ -9,29 +9,57 @@ import styles from '../style/main';
 export default function Cadastro({navigation}) {
 
   const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState (null)
+  const [nome, setNome] = useState (null)
+  const [cpf, setCpf] = useState (null)
+  const [telefone, setTelefone] = useState (null)
+  const [senha, setSenha] = useState (null)
 
-  const entrar = () => {
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Principal'}]
-    })
-  }
-
-  const cadastrar = () => {
-    navigation.navigate('Cadastro') 
+  const salvar = () => {
+    console.log ('Cadastro Realizado com Sucesso')
   }
 
   return (
     <View style={[styles.container, specificStyle.specificContainer]}>
       <Text h3>Cadastre-se</Text>
       <Input 
-      placeholder='Login'
+      placeholder='E-mail'
       leftIcon={{ type: 'font-awesome', name: 'envelope'}}
       onChangeText={value => setEmail(value)}
       keyboardType='email-address'
+      returnKeyType='done'
+      />
+      <Input 
+      placeholder='Nome Completo'
+      leftIcon={{ type: 'font-awesome', name: 'user'}}
+      onChangeText={value => setNome(value)}
+      returnKeyType='done'
+      />
+      <Input 
+      placeholder='Cpf'
+      leftIcon={{ type: 'font-awesome', name: 'id-card'}}
+      onChangeText={value => setCpf(value)}
+      keyboardType='number-pad'
+      returnKeyType='done'
+      />
+      <Input 
+      placeholder='Telefone'
+      leftIcon={{ type: 'font-awesome', name: 'phone'}}
+      onChangeText={value => setTelefone(value)}
+      keyboardType='phone-pad'
+      returnKeyType='done'
+      />
+      <Input 
+      placeholder='Senha'
+      leftIcon={{ type: 'font-awesome', name: 'lock'}}
+      onChangeText={value => setSenha(value)}
+      returnKeyType='done'
       />
        
+      <CheckBox
+        title='Eu aceito os termos de uso'
+        checkedIcon=''
+      />
+
       <Button 
       icon={
         <Icon 
@@ -40,9 +68,9 @@ export default function Cadastro({navigation}) {
           color='white'
         />
       }
-        title='Cadastrar'
+        title='Salvar'
         buttonStyle={specificStyle.button}
-        onPress={() => cadastrar()}
+        onPress={() => salvar()}
       />      
 
     </View>
