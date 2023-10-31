@@ -10,8 +10,9 @@ import styles from './style/main'
 import Login from './telas/telalogin';
 import Consulta from './telas/telaconsulta';
 import Informacao from './telas/telainfo';
-import Usuario from './telas/telausuario';
+import Usuario from './telas/telacadastro';
 import Principal from './telas/telaprincipal';
+import Cadastro from './telas/telacadastro';
 
 
 const Stack = createStackNavigator();
@@ -23,7 +24,7 @@ function MyStack() {
       <Stack.Screen name="Principal" component={Principal} />
       <Stack.Screen name="Consulta" component={Consulta} />
       <Stack.Screen name="Informações" component={Informacao} />
-      <Stack.Screen name="Personalização" component={Usuario} />
+      <Stack.Screen name="Cadastro" component={Cadastro} />
     </Stack.Navigator>
   );
 }

@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../style/main';
 
 
-export default function Login({navigation}) {
+export default function Cadastro({navigation}) {
 
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState (null)
@@ -24,34 +24,14 @@ export default function Login({navigation}) {
 
   return (
     <View style={[styles.container, specificStyle.specificContainer]}>
-      <Text h2>LOOKING FOR EPI</Text>
+      <Text h3>Cadastre-se</Text>
       <Input 
       placeholder='Login'
       leftIcon={{ type: 'font-awesome', name: 'envelope'}}
       onChangeText={value => setEmail(value)}
       keyboardType='email-address'
       />
-
-      <Input 
-      placeholder='Password'
-      leftIcon={{ type: 'font-awesome', name: 'lock'}}
-      onChangeText={value => setPassword(value)}
-      secureTextEntry={true}
-      />
-
-      <Button 
-      icon={
-        <Icon 
-          name='check'
-          size={15}
-          color='white'
-        />
-      }
-        title='Entrar'
-        buttonStyle={specificStyle.button}
-        onPress={() => entrar()}
-      />
-
+       
       <Button 
       icon={
         <Icon 
