@@ -58,7 +58,6 @@ export default function Cadastro({navigation}) {
       leftIcon={{ type: 'font-awesome', name: 'envelope'}}
       onChangeText={value => 
         setEmail(value)
-        setErrorEmail(null)
       }
       keyboardType='email-address'
       returnKeyType='done'
@@ -69,7 +68,6 @@ export default function Cadastro({navigation}) {
       leftIcon={{ type: 'font-awesome', name: 'user'}}
       onChangeText={value => 
         setNome(value)
-        setErrorNome(null)
       }
       returnKeyType='done'
       errorMessage={errorNome}
@@ -79,7 +77,6 @@ export default function Cadastro({navigation}) {
       leftIcon={{ type: 'font-awesome', name: 'id-card'}}
       onChangeText={value => 
         setCpf(value)
-        setErrorCpf(null)
       }
       keyboardType='number-pad'
       returnKeyType='done'
@@ -90,7 +87,6 @@ export default function Cadastro({navigation}) {
       leftIcon={{ type: 'font-awesome', name: 'phone'}}
       onChangeText={value => 
         setTelefone(value)
-        setErrorTelefone(null)
       }
       keyboardType='phone-pad'
       returnKeyType='done'
