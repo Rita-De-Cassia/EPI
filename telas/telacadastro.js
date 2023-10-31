@@ -10,12 +10,44 @@ export default function Cadastro({navigation}) {
 
   const [email, setEmail] = useState(null)
   const [nome, setNome] = useState (null)
-  const [cpf, setCpf] = useState (null)
+  const [Cpf, setCpf] = useState (null)
   const [telefone, setTelefone] = useState (null)
   const [senha, setSenha] = useState (null)
+  const [isSelected, setSelected] = useState (false)
+  const [errorEmail, setErrorEmail] = useState(null)
+  const [errorNome, setErrorNome] = useState(null)
+  const [errorCpf, setErrorCpf] = useState(null)
+  const [errorTelefone, setErrorTelefone] = useState(null)
+
+  const validar = () => {
+    let error = false
+    setErrorEmail(null)
+    setErrorCpf(null)
+
+    if(email == null){
+      setErrorEmail('Preencha seu E-mail         corretamente')
+      error = true
+    }
+    if(Cpf == null){
+      setErrorEmail('Preencha seu CPF corretamente')
+      error = true
+    }
+    if(nome == null){
+      setErrorEmail('Preencha seu Nome')
+      error = true
+    }
+    if(telefone == null){
+      setErrorEmail('Preencha seu Telefone')
+      error = true
+    }
+    return !error
+  }
+  
 
   const salvar = () => {
+    if (validar()){
     console.log ('Cadastro Realizado com Sucesso')
+    }
   }
 
   return (
@@ -24,29 +56,45 @@ export default function Cadastro({navigation}) {
       <Input 
       placeholder='E-mail'
       leftIcon={{ type: 'font-awesome', name: 'envelope'}}
-      onChangeText={value => setEmail(value)}
+      onChangeText={value => 
+        setEmail(value)
+        setErrorEmail(null)
+      }
       keyboardType='email-address'
       returnKeyType='done'
+      errorMessage={errorEmail}
       />
       <Input 
       placeholder='Nome Completo'
       leftIcon={{ type: 'font-awesome', name: 'user'}}
-      onChangeText={value => setNome(value)}
+      onChangeText={value => 
+        setNome(value)
+        setErrorNome(null)
+      }
       returnKeyType='done'
+      errorMessage={errorNome}
       />
       <Input 
       placeholder='Cpf'
       leftIcon={{ type: 'font-awesome', name: 'id-card'}}
-      onChangeText={value => setCpf(value)}
+      onChangeText={value => 
+        setCpf(value)
+        setErrorCpf(null)
+      }
       keyboardType='number-pad'
       returnKeyType='done'
+      errorMessage={errorCpf}
       />
       <Input 
       placeholder='Telefone'
       leftIcon={{ type: 'font-awesome', name: 'phone'}}
-      onChangeText={value => setTelefone(value)}
+      onChangeText={value => 
+        setTelefone(value)
+        setErrorTelefone(null)
+      }
       keyboardType='phone-pad'
       returnKeyType='done'
+      errorMessage={errorTelefone}
       />
       <Input 
       placeholder='Senha'
@@ -57,7 +105,12 @@ export default function Cadastro({navigation}) {
        
       <CheckBox
         title='Eu aceito os termos de uso'
-        checkedIcon=''
+        checkedIcon='check'
+        uncheckedIcon='square-o'
+        checkedColor='purple'
+        uncheckedColor='red'
+        checked={isSelected}
+        onPress={() => setSelected(!isSelected)}
       />
 
       <Button 
