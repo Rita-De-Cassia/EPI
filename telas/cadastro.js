@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState } from "react";
 import { StyleSheet, View } from 'react-native';
 import { Button, CheckBox, Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';

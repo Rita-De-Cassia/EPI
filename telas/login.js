@@ -1,10 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState } from "react";
 import { StyleSheet, View } from 'react-native';
 import { Button, Input, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../style/main';
 
+import principal from "./principal";
 
 export default function Login({navigation}) {
 
@@ -18,9 +18,6 @@ export default function Login({navigation}) {
     })
   }
 
-  const cadastrar = () => {
-    navigation.navigate('Cadastro') 
-  }
 
   return (
     <View style={[styles.container, specificStyle.specificContainer]}>
@@ -52,19 +49,6 @@ export default function Login({navigation}) {
         onPress={() => entrar()}
       />
 
-      <Button 
-      icon={
-        <Icon 
-          name='user'
-          size={15}
-          color='white'
-        />
-      }
-        title='Cadastrar'
-        buttonStyle={specificStyle.button}
-        onPress={() => cadastrar()}
-      />      
-
     </View>
   );
 }
@@ -73,7 +57,6 @@ const specificStyle = StyleSheet.create({
   specificContainer: {
     flex: 1,
     backgroundColor: 'rgba(77, 148, 255, 0.54)',
-    backgroundImage: '../imagens/fundo.jpg',
     alignItems: 'center',
     justifyContent: 'center',
   },
