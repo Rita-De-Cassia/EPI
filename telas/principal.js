@@ -5,7 +5,7 @@ import { Button, Input, Text} from 'react-native-elements';
 import Adicionar from './adicionar'
 import Inicio from './inicio';
 
-function Principal() {
+function Principal(navigation) {
 
   const [ca, setca] = useState (null)
   

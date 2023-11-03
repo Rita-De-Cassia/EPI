@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import Cadastro from './cadastro';
 import Login from './login';
 
-function Inicio() {
+function Inicio({navigation}) {
   const navigation = useNavigation();
 
   const Login = () => {

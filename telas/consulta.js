@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput, ImageBackground } from 'react-native';
 import { Button, Input} from 'react-native-elements';
 
-function Consulta() {
+function Consulta(navigation) {
 
   const Principal = () => {
     navigation.navigate('Principal') 
