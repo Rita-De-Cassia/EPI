@@ -6,52 +6,53 @@ import styles from '../style/main';
 
 import principal from "./principal";
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState (null)
+  const handleLogin = () => {
+    if (email === '' || password === '') {
+      console.error('Email e senha são obrigatórios');
+      return;
+    }
 
-  const entrar = () => {
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Principal'}]
-    })
-  }
-
+    try {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Principal' }],
+      });
+    } catch (error) {
+      console.error('Erro na navegação', error);
+    }
+  };
 
   return (
     <View style={[styles.container, specificStyle.specificContainer]}>
       <Text h2>LOOKING FOR EPI</Text>
       <Input 
-      placeholder='Login'
-      leftIcon={{ type: 'font-awesome', name: 'envelope'}}
-      onChangeText={value => setEmail(value)}
-      keyboardType='email-address'
+        placeholder='Login'
+        leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+        onChangeText={setEmail}
+        keyboardType='email-address'
       />
 
       <Input 
-      placeholder='Password'
-      leftIcon={{ type: 'font-awesome', name: 'lock'}}
-      onChangeText={value => setPassword(value)}
-      secureTextEntry={true}
+        placeholder='Password'
+        leftIcon={{ type: 'font-awesome', name: 'lock' }}
+        onChangeText={setPassword}
+        secureTextEntry={true}
       />
 
       <Button 
-      icon={
-        <Icon 
-          name='check'
-          size={15}
-          color='white'
-        />
-      }
+        icon={<Icon name='check' size={15} color='white' />}
         title='Entrar'
         buttonStyle={specificStyle.button}
-        onPress={() => entrar()}
+        onPress={handleLogin}
       />
-
     </View>
   );
 }
+
 
 const specificStyle = StyleSheet.create({
   specificContainer: {

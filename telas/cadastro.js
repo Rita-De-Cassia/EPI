@@ -5,49 +5,50 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../style/main';
 
 
-export default function Cadastro({navigation}) {
-
-  const [email, setEmail] = useState(null)
-  const [nome, setNome] = useState (null)
-  const [Cpf, setCpf] = useState (null)
-  const [telefone, setTelefone] = useState (null)
-  const [senha, setSenha] = useState (null)
-  const [isSelected, setSelected] = useState (false)
-  const [errorEmail, setErrorEmail] = useState(null)
-  const [errorNome, setErrorNome] = useState(null)
-  const [errorCpf, setErrorCpf] = useState(null)
-  const [errorTelefone, setErrorTelefone] = useState(null)
+export default function Cadastro({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [senha, setSenha] = useState('');
+  const [isSelected, setSelected] = useState(false);
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorNome, setErrorNome] = useState('');
+  const [errorCpf, setErrorCpf] = useState('');
+  const [errorTelefone, setErrorTelefone] = useState('');
 
   const validar = () => {
-    let error = false
-    setErrorEmail(null)
-    setErrorCpf(null)
+    setErrorEmail('');
+    setErrorNome('');
+    setErrorCpf('');
+    setErrorTelefone('');
 
-    if(email == null){
-      setErrorEmail('Preencha seu E-mail         corretamente')
-      error = true
+    let valido = true;
+    if (!email) {
+      setErrorEmail('Preencha seu E-mail corretamente');
+      valido = false;
     }
-    if(Cpf == null){
-      setErrorEmail('Preencha seu CPF corretamente')
-      error = true
+    if (!nome) {
+      setErrorNome('Preencha seu Nome');
+      valido = false;
     }
-    if(nome == null){
-      setErrorEmail('Preencha seu Nome')
-      error = true
+    if (!cpf) {
+      setErrorCpf('Preencha seu CPF corretamente');
+      valido = false;
     }
-    if(telefone == null){
-      setErrorEmail('Preencha seu Telefone')
-      error = true
+    if (!telefone) {
+      setErrorTelefone('Preencha seu Telefone');
+      valido = false;
     }
-    return !error
-  }
-  
+    return valido;
+  };
 
   const salvar = () => {
-    if (validar()){
-    console.log ('Cadastro Realizado com Sucesso')
+    if (validar()) {
+      console.log('Cadastro Realizado com Sucesso');
+      navigation.navigate('Login');
     }
-  }
+  };
 
   return (
     <View style={[styles.container, specificStyle.specificContainer]}>

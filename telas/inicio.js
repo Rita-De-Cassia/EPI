@@ -1,28 +1,35 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-elements';
-import Cadastro from './cadastro';
-import Login from './login';
 
-function Inicio({navigation}) {
-  const navigation = useNavigation();
+function Inicio({ navigation }) {
 
-  const Login = () => {
-    navigation.navigate('Login');
+  const handleLogin = () => {
+    try {
+      navigation.navigate('Login');
+    } catch (error) {
+      console.error('Erro na navegação para Login', error);
+    }
   };
 
-  const Cadastro = () => {
-    navigation.navigate('Cadastro') 
-  }
+  const handleCadastro = () => {
+    try {
+      navigation.navigate('Cadastro');
+    } catch (error) {
+      console.error('Erro na navegação para Cadastro', error);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./fundo.jpg')} style={styles.background} opacity={0.02} >
+      <ImageBackground source={require('./fundo.jpg')} style={styles.background} opacity={0.02}>
         <Text style={styles.title}>LOOKING FOR EPI</Text>
         <View style={styles.buttons}>
-          <Button title="LOGIN" buttonStyle={[styles.button1, styles.login]} onPress={() => Login()}/>
-          <Button title="CADASTRE-SE" buttonStyle={[styles.button2, styles.subscribe]} onPress={() => Cadastro()}/>
+          <TouchableOpacity style={[styles.button, styles.login]} onPress={handleLogin}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, styles.subscribe]} onPress={handleCadastro}>
+            <Text style={styles.buttonText}>CADASTRE-SE</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
